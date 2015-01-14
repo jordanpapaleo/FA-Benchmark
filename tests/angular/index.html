@@ -1,75 +1,11 @@
 <html ng-app="famous-angular">
 
 <head>
-    <link rel="stylesheet" href="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/famous-angular/dist/famous-angular.min.css">
-    <link rel="stylesheet" href="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/app.css">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html, body, #fa-app {
-            height: 100%;
-            height: 568px;
-            width: 320px;
-            overflow: hidden
-        }
-
-        #fa-app {
-            background: black;
-        }
-
-        .header img, .footer img {
-            display: block;
-            margin: 0;
-            padding: 0;
-            width: 320px;
-        }
-
-        .tile {
-            cursor: zoom-in;
-        }
-
-        .tile .zoomed {
-            cursor: zoom-out;
-        }
-
-        .tile img {
-            width: 100%;
-            display: block
-        }
-
-        .detail-tile {
-            overflow: hidden;
-        }
-
-        .detail-tile img {
-            width: 100%;
-            height: auto;
-            display: block
-        }
-
-        .tile .fa-surface {
-            height: 100%;
-        }
-
-        .clip {
-            overflow: hidden;
-        }
-
-        .img-fill img {
-            height: 100%;
-            width: 100%;
-        }
-
-        .overlay {
-            pointer-events: none;
-        }
-
-    </style>
+    <link rel="stylesheet" href="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/famous-angular/dist/famous-angular.min.css">
+    <link rel="stylesheet" href="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/app.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -78,7 +14,6 @@
 
         <!-- header -->
         <fa-modifier id="header">
-
             <fa-modifier id="header-highlight">
                 <fa-surface fa-background-color="'#70C9B3'">
                 </fa-surface>
@@ -92,10 +27,8 @@
             </fa-modifier>
         </fa-modifier>
 
-
         <!-- body -->
         <fa-view fa-size="[320, 675]">
-
             <fa-modifier id='overlay-scrim'>
                 <fa-surface fa-background-color='"black"' class='overlay' fa-pipe-to='eventInput'>
                 </fa-surface>
