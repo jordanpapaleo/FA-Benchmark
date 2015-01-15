@@ -1,0 +1,15 @@
+.flashScreen {
+    background-color: hotpink;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000000;
+    display: none;
+}
+
+.flashScreen.flash {
+    display: block;
+    opacity: .75;
+}

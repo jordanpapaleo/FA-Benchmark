@@ -50,6 +50,7 @@ FPS.prototype.start = function () {
 
 FPS.prototype.stop = function () {
     var self = this;
+    self.flashScreen();
 
     FPSMeter.stop();
 
@@ -68,10 +69,16 @@ FPS.prototype.stop = function () {
     this.save(fpsInfo)
 };
 
+FPS.prototype.flashScreen = function() {
+    $('.flashScreen').toggleClass('flash');
+};
+
 FPS.prototype.save = function (data) {
+    var self = this;
+
     if(data) {
         var ajaxObj = {
-            url: 'https://api.mongolab.com/api/1/databases/perftest/collections/' + this.type + '?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
+            url: 'https://api.mongolab.com/api/1/databases/perftest/collections/' + this.type + '?apiKey=' + APIKEY,
             type: 'POST',
             dataType: 'json',
             contentType: "application/json",
@@ -81,11 +88,11 @@ FPS.prototype.save = function (data) {
         $.ajax(ajaxObj)
             .done(function (data) {
                 console.log('success', data);
+                self.flashScreen();
             })
             .error(function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log('error', errorThrown);
+                self.flashScreen();
             });
     }
 };
-
-
