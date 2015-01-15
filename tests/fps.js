@@ -71,7 +71,7 @@ FPS.prototype.stop = function () {
 FPS.prototype.save = function (data) {
     if(data) {
         var ajaxObj = {
-            url: 'https://api.mongolab.com/api/1/databases/perftest/collections/' + this.type + '?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
+            url: 'https://api.mongolab.com/api/1/databases/perftest/collections/' + this.type + '?apiKey=' + APIKEY,
             type: 'POST',
             dataType: 'json',
             contentType: "application/json",
