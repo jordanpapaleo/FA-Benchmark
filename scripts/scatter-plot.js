@@ -63,12 +63,12 @@ function mutateData(data) {
 }
 
 function plotRange(data, className) {
-    var margin = {top: 20, right: 15, bottom: 60, left: 60},
-        width = 800 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+    var margin = {top: 20, right: 15, bottom: 20, left: 40};
+    var width = 800 - (margin.left + margin.right);
+    var height = 500 - (margin.top + margin.bottom);
 
     var x = d3.scale.linear()
-        .domain([0, d3.max(data, function(d) { return d[0]; })])
+        .domain([0, 20])//d3.max(data, function(d) { return d[0]; })
         .range([ 0, width ]);
 
     var y = d3.scale.linear()
@@ -86,6 +86,7 @@ function plotRange(data, className) {
         .attr('height', height)
         .attr('class', 'main ' + className);
 
+
     // draw the x axis
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -95,6 +96,8 @@ function plotRange(data, className) {
         .attr('transform', 'translate(0,' + height + ')')
         .attr('class', 'main axis date')
         .call(xAxis);
+    // end draw x axis
+
 
     // draw the y axis
     var yAxis = d3.svg.axis()
@@ -105,6 +108,8 @@ function plotRange(data, className) {
         .attr('transform', 'translate(0,0)')
         .attr('class', 'main axis date')
         .call(yAxis);
+    // end draw y axis
+
 
     var g = main.append("svg:g");
 
@@ -113,5 +118,5 @@ function plotRange(data, className) {
         .enter().append("svg:circle")
         .attr("cx", function (d,i) { return x(d[0]); } )
         .attr("cy", function (d) { return y(d[1]); } )
-        .attr("r", 3);
+        .attr("r", 2);
 }

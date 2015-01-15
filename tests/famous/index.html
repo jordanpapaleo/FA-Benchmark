@@ -1,13 +1,12 @@
 <html ng-app="famous-angular">
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/famous-angular/dist/famous-angular.min.css">
     <link rel="stylesheet" href="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/app.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <fa-app ng-controller='MainCtrl' id='fa-app' ts-sheet='kodaline'>
         <fa-header-footer-layout fa-options='{headerSize: 74, footerSize: 91}'>
@@ -21,8 +20,8 @@
 
                 <fa-modifier>
                     <fa-surface class='header'>
-                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/status.png'></img>
-                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/library_header.png'></img>
+                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/status.png'>
+                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/library_header.png'>
                     </fa-surface>
                 </fa-modifier>
             </fa-modifier>
@@ -42,13 +41,13 @@
 
                             <fa-modifier class="hero-tile" fa-opacity="tileOpacity(0)">
                                 <fa-surface class='tile' ng-click="detailFor(0)" fa-pipe-to='eventInput'>
-                                    <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/tile1.png'></img>
+                                    <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/tile1.png'>
                                 </fa-surface>
                             </fa-modifier>
 
                             <fa-modifier class="hero-tile">
                                 <fa-surface class='tile' fa-pipe-to='eventInput'>
-                                    <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/tile2.png'></img>
+                                    <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/tile2.png'>
                                 </fa-surface>
                             </fa-modifier>
                         </fa-sequential-layout>
@@ -83,7 +82,7 @@
                             <fa-surface class='detail-tile'
                                         fa-pipe-to='eventInput'
                                         ng-class='{zoomed: zoomed}'>
-                                <img width="{{width}}" height="{{height}}" ng-src='{{"//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/" + tiles[detail].url}}'></img>
+                                <img width="{{width}}" height="{{height}}" ng-src='{{"//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/" + tiles[detail].url}}'>
                             </fa-surface>
                         </fa-modifier>
 
@@ -107,7 +106,7 @@
 
                                         <fa-modifier class="detail-title-ui">
                                             <fa-surface class='clip img-fill'>
-                                                <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/playing_track.png'></img>
+                                                <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/playing_track.png'>
                                             </fa-surface>
                                         </fa-modifier>
                                     </fa-modifier>
@@ -115,7 +114,7 @@
 
                                 <fa-modifier class="detail-title-ui">
                                     <fa-surface class='clip img-fill'>
-                                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/playing_artist.png'></img>
+                                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/playing_artist.png'>
                                     </fa-surface>
                                 </fa-modifier>
 
@@ -136,13 +135,13 @@
             <fa-modifier>
                 <fa-modifier id="footer-now-playing">
                     <fa-surface class='footer'>
-                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/nowplaying.png'></img>
+                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/nowplaying.png'>
                     </fa-surface>
                 </fa-modifier>
 
                 <fa-modifier id="footer-navigation">
                     <fa-surface class='footer'>
-                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/footer.png'></img>
+                        <img src='//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/images/footer.png'>
                     </fa-surface>
                 </fa-modifier>
 
@@ -151,18 +150,19 @@
         </fa-header-footer-layout>
     </fa-app>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/famous/dist/famous-global.js"></script>
-    <script src="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/angular/angular.js"></script>
-    <script src="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/famous-angular/dist/famous-angular.js"></script>
-    <script src="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/sheets/dist/sheets.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.1.1/firebase.js"></script>
-    <script type='text/javascript' src='../../libs/fpsmeter.js'></script>
+    <div class="flashScreen"></div>
 
+    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../bower_components/famous/dist/famous-global.js"></script>
+    <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
+    <script src="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/sheets/dist/sheets.js"></script>
+
+    <script type='text/javascript' src='../../libs/fpsmeter.js'></script>
     <script src="../../scripts/CONST.js"></script>
     <script src="../fps.js"></script>
     <script type="text/javascript">
-//        new FPS(10000, 'famous')
+        new FPS(DURATION, 'famous')
     </script>
 
     <script src="app.js"></script>
