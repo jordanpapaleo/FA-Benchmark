@@ -1,16 +1,25 @@
-//Logging using fpsmeter.js
+//Requires FPSMeter.js
 
-window.addEventListener('DOMContentLoaded', function() {
-    countdown(1500);
+var FPS = function(duration, type) {
+    this.init(duration);
+    this.type = type;
+    this.fpsRecords = [];
+};
 
-    setTimeout(function() {
-        stop()
-    }, 10000);
-});
+FPS.prototype.init = function (duration) {
+    this.setEventHandlers(duration)
+};
 
-var fpsRecords = [];
+FPS.prototype.setEventHandlers = function(duration) {
+    var self = this;
 
-function countdown(countdown) {
+    window.addEventListener('DOMContentLoaded', function() {
+        self.countdown(duration);
+    });
+};
+
+FPS.prototype.countdown = function (duration) {
+    var self = this;
     var step = 3;
 
     var finalCountdown = setInterval(function() {
@@ -20,52 +29,53 @@ function countdown(countdown) {
         } else {
             clearInterval(finalCountdown);
             console.info('GO');
-            start();
-        }
-    }, countdown / 3);
-}
+            self.start();
 
-function start() {
+            setTimeout(function() {
+                self.stop()
+            }, duration);
+        }
+    }, 500);
+};
+
+FPS.prototype.start = function () {
+    var self = this;
+
     document.addEventListener("fps", function(evt) {
-        fpsRecords.push(evt.fps);
+        self.fpsRecords.push(evt.fps);
     }, false);
 
     FPSMeter.run(0.5);
-}
+};
 
-function stop() {
+FPS.prototype.stop = function () {
+    var self = this;
+
     FPSMeter.stop();
-    var totalRecords = fpsRecords.length;
-    var sum = fpsRecords.reduce(function(total, num){ return total + num }, 0);
 
+    var totalRecords = self.fpsRecords.length;
+    var sum = self.fpsRecords.reduce(function(total, num){ return total + num }, 0);
     var fps = Math.round((sum / totalRecords) * 100) / 100;
-    console.info("Average fps:", {
+
+    var fpsInfo = {
         avgFps: fps,
-        records: fpsRecords,
+        records: self.fpsRecords,
         timeStamp: Date.now()
-    });
+    };
 
-    console.info(JSON.stringify({
-        avgFps: fps,
-        records: fpsRecords,
-        timeStamp: Date.now()
-    }));
+    console.info("Average fps:", fpsInfo);
 
-    save(fps, fpsRecords);
-}
+    this.save(fpsInfo)
+};
 
-function save(fps, fpsRecords) {
-    if(fps && fpsRecords && fpsRecords.length > 0) {
+FPS.prototype.save = function (data) {
+    if(data) {
         var ajaxObj = {
-            url: 'https://api.mongolab.com/api/1/databases/perftest/collections/greensock?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
+            url: 'https://api.mongolab.com/api/1/databases/perftest/collections/' + this.type + '?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
             type: 'POST',
             dataType: 'json',
             contentType: "application/json",
-            data: JSON.stringify({
-                avgFps: fps,
-                records: fpsRecords,
-                timeStamp: Date.now()
-            })
+            data: JSON.stringify(data)
         };
 
         $.ajax(ajaxObj)
@@ -76,4 +86,6 @@ function save(fps, fpsRecords) {
                 console.log('error', errorThrown);
             });
     }
-}
+};
+
+
