@@ -88,6 +88,7 @@ angular.module('famous-angular', [
 
         // pull some transform methods into fns that are easier to work with
         var translate = function(xyz) { return Transform.translate.apply(Transform, xyz); }
+
         var multiply = function(transforms) {
             return function(t) {
                 return Transform.multiply.apply(
