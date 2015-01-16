@@ -5,7 +5,6 @@ function getFamousData() {
         dataType: 'json',
         contentType: "application/json"
     }).then(function(data) {
-        console.info('Famous',data);
         plotData(data, 'famous');
     });
 }
@@ -17,13 +16,9 @@ function getGreensockData() {
         dataType: 'json',
         contentType: "application/json"
     }).then(function(data) {
-        console.info('Greensock',data);
         plotData(data, 'greensock');
     });
 }
-
-getFamousData();
-getGreensockData();
 
 function callDb(ajaxObj) {
     return $.ajax(ajaxObj)
@@ -62,25 +57,26 @@ function mutateData(data) {
     return records;
 }
 
+
+
 function plotRange(data, className) {
     var margin = {top: 20, right: 15, bottom: 20, left: 40};
     var width = 800 - (margin.left + margin.right);
     var height = 500 - (margin.top + margin.bottom);
 
-    var x = d3.scale.linear()
-        .domain([0, 20])//d3.max(data, function(d) { return d[0]; })
-        .range([ 0, width ]);
+    var svg = d3.select('#charts').select('svg');
 
-    var y = d3.scale.linear()
-        .domain([0, 70]) //d3.max(data, function(d) { return d[1]; })
-        .range([ height, 0 ]);
-
-    var chart = d3.select('#charts').select('svg')
-        .attr('width', width + margin.right + margin.left)
+    svg.attr('width', width + margin.right + margin.left)
         .attr('height', height + margin.top + margin.bottom)
         .attr('class', 'chart ');
 
-    var main = chart.append('g')
+    svg.append("svg:text")
+        .attr("class", "title")
+        .attr("x", 375)
+        .attr("y", 20)
+        .text("FPS Over Time");
+
+    var main = svg.append('g')
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
         .attr('width', width)
         .attr('height', height)
@@ -88,6 +84,10 @@ function plotRange(data, className) {
 
 
     // draw the x axis
+    var x = d3.scale.linear()
+        .domain([0, 18])//d3.max(data, function(d) { return d[0]; })
+        .range([ 0, width ]);
+
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient('bottom');
@@ -100,6 +100,10 @@ function plotRange(data, className) {
 
 
     // draw the y axis
+    var y = d3.scale.linear()
+        .domain([0, 70]) //d3.max(data, function(d) { return d[1]; })
+        .range([ height, 0 ]);
+
     var yAxis = d3.svg.axis()
         .scale(y)
         .orient('left');
@@ -120,3 +124,6 @@ function plotRange(data, className) {
         .attr("cy", function (d) { return y(d[1]); } )
         .attr("r", 2);
 }
+
+getFamousData();
+getGreensockData();
