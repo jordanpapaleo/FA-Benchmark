@@ -46,7 +46,7 @@
         return;
     }
 
-// Use this to remmeber what method we use to calculate fps
+// Use this to remember what method we use to calculate fps
     var method = 'raf';
 
     var requestAnimationFrame = window.requestAnimationFrame;
@@ -184,7 +184,7 @@
             bodyRef.removeChild(ref);
             ref = null;
         }
-    }
+    };
 
     function GetFloatValueOfAttr (element,attr) {
         var floatValue = null;

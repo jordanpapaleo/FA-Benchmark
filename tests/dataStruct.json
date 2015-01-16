@@ -1,4 +1,21 @@
 {
+  "famousAngular": {
+    "useragent": {
+      "iphone5": [{"TEST": "RESULTS"}],
+      "nexus": [],
+      "safari": [],
+      "chrome": [],
+      "ipad": []
+    }
+  },
+  "famous": {},
+  "greensock": {}
+}
+
+
+
+
+/*{
   "greensock" : [
     {
       "avgFps":60,
@@ -13,4 +30,6 @@
       "timeStamp":1421293432327
     }
   ]
-}
+}*/
+
+
