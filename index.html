@@ -12,8 +12,16 @@
             fill: orangered;
         }
 
+        .famous.circle {
+            background-color: orangered;
+        }
+
         .greensock circle {
             fill: green;
+        }
+
+        .greensock.circle {
+            background-color: green;
         }
 
         .main text {
@@ -24,6 +32,46 @@
             shape-rendering: crispEdges;
             stroke: black;
             fill: none;
+        }
+
+        .legend {
+            border: 1px solid #777777;
+            width: 150px;
+            position: absolute;
+            border-radius: 4px;
+            left: 650px;
+            color: #777777;
+            top: 25px;
+        }
+
+        .circle {
+            float: left;
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 10px;
+            height: 10px;
+            background: red;
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+        }
+
+        .y-label {
+            position: absolute;
+            top: 240px;
+            left: 12px;
+            transform: rotateZ(-90deg);
+            color: #777777;
+        }
+
+        .x-label {
+            position: absolute;
+            bottom: -13px;
+            width: 40px;
+            text-align: center;
+            left: 408px;
+            color: #777777;
         }
     </style>
 </head>
@@ -47,8 +95,16 @@
         </nav>
 
         <h1>GreenSock v Famous-Angular</h1>
+
+
         <div class="row">
             <div class="col-md-12" id="charts">
+                <div class="legend">
+                    <div class="circle famous"></div> Famous-Angular <br>
+                    <div class="circle greensock"></div> GreenSock
+                </div>
+                <div class="x-label">Time</div>
+                <div class="y-label">FPS</div>
                 <svg class="chart"></svg>
             </div>
         </div>

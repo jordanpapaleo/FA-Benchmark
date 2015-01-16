@@ -87,11 +87,9 @@ FPS.prototype.save = function (data) {
 
         $.ajax(ajaxObj)
             .done(function (data) {
-                console.log('success', data);
                 self.flashScreen();
             })
             .error(function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log('error', errorThrown);
                 self.flashScreen();
             });
     }
