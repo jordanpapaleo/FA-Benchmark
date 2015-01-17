@@ -1,0 +1,18 @@
+{
+  "famousAngular": {
+    "iphone5": [
+      {
+        "userAgent" :"",
+        "avgFps":60,
+        "records":[60,60,60,60,60,60,60,60,60,60,60,60,60,60,60],
+        "timeStamp":1421293432327
+      }
+    ],
+    "nexus": [],
+    "safari": [],
+    "chrome": [],
+    "ipad": []
+  },
+  "famous": {},
+  "greensock": {}
+}

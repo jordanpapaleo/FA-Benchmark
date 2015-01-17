@@ -1,6 +1,6 @@
 function getFamousData() {
     callDb({
-        url: 'https://api.mongolab.com/api/1/databases/perftest/collections/famous?apiKey=' + APIKEY,
+        url: 'https://api.mongolab.com/api/1/databases/perftest/collections/famous?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
         type: 'GET',
         dataType: 'json',
         contentType: "application/json"
@@ -9,11 +9,9 @@ function getFamousData() {
     });
 }
 
-
-
 function getGreensockData() {
     callDb({
-        url: 'https://api.mongolab.com/api/1/databases/perftest/collections/greensock?apiKey=' + APIKEY,
+        url: 'https://api.mongolab.com/api/1/databases/perftest/collections/greensock?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
         type: 'GET',
         dataType: 'json',
         contentType: "application/json"
@@ -51,15 +49,11 @@ function mutateData(data) {
     var records = [];
 
     for(var i = 0, j = data.length; i < j; i++) {
-        var record = data[i];
-
-        records.push([i, record]);
+        records.push([i, data[i]]);
     }
 
     return records;
 }
-
-
 
 function plotRange(data, className) {
     var margin = {top: 20, right: 15, bottom: 20, left: 40};

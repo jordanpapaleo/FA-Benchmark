@@ -1,7 +1,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../styles/main.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -40,18 +39,31 @@
         </div>
     </div>
 
-    <div class="flashScreen"></div>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/q.js/1.1.2/q.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
-    <script type='text/javascript' src='../../libs/fpsmeter.js'></script>
 
-    <script src="../../scripts/CONST.js"></script>
-    <script src="../fps.js"></script>
+    <script src="../../scripts/fps_raf.js"></script>
     <script type="text/javascript">
-        new FPS(DURATION, 'greensock')
+        fps.init({
+            duration: 10000,
+            save: function(fpsInfo) {
+                $.ajax({
+                    url: 'https://api.mongolab.com/api/1/databases/perftest/collections/greensock?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: "application/json",
+                    data: JSON.stringify(fpsInfo)
+                }).done(function (data) {
+                    console.log("Success",data);
+                }).error(function (err) {
+                    console.log("Error", err);
+                });
+            }
+        });
+
+//        fps.init();
     </script>
 
     <script src="app.js"></script>

@@ -4,7 +4,6 @@
 
     <link rel="stylesheet" href="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/famous-angular/dist/famous-angular.min.css">
     <link rel="stylesheet" href="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/app.css">
-    <link rel="stylesheet" href="../../styles/main.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -150,19 +149,32 @@
         </fa-header-footer-layout>
     </fa-app>
 
-    <div class="flashScreen"></div>
-
     <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../../bower_components/famous/dist/famous-global.js"></script>
     <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
     <script src="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/sheets/dist/sheets.js"></script>
 
-    <script type='text/javascript' src='../../libs/fpsmeter.js'></script>
-    <script src="../../scripts/CONST.js"></script>
-    <script src="../fps.js"></script>
+    <script src="../../scripts/fps_raf.js"></script>
     <script type="text/javascript">
-        new FPS(DURATION, 'famous')
+        /*fps.init({
+            duration: 10000,
+            save: function(fpsInfo) {
+                $.ajax({
+                    url: 'https://api.mongolab.com/api/1/databases/perftest/collections/fv2?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: "application/json",
+                    data: JSON.stringify(fpsInfo)
+                }).done(function (data) {
+                    console.log("Success",data);
+                }).error(function (err) {
+                    console.log("Error", err);
+                });
+            }
+        });*/
+
+        fps.init();
     </script>
 
     <script src="app.js"></script>

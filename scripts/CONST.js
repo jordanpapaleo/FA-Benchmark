@@ -1,2 +1,0 @@
-var APIKEY = "vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl";
-var DURATION = 10000;
