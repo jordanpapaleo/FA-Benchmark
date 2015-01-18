@@ -155,13 +155,13 @@
     <script type="text/javascript" src="../../bower_components/famous-angular/dist/famous-angular.min.js"></script>
     <script src="//share.famo.us.s3-us-west-2.amazonaws.com/zackbrown/famous-kodaline/bower_components/sheets/dist/sheets.js"></script>
 
-    <script src="../../scripts/fps_raf.js"></script>
+    <script src="../../bower_components/fps-benchmark/dist/fps.min.js"></script>
     <script type="text/javascript">
-        /*fps.init({
+        fps.init({
             duration: 10000,
             save: function(fpsInfo) {
                 $.ajax({
-                    url: 'https://api.mongolab.com/api/1/databases/perftest/collections/fv2?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
+                    url: 'https://api.mongolab.com/api/1/databases/perftest/collections/famous?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
                     type: 'POST',
                     dataType: 'json',
                     contentType: "application/json",
@@ -172,9 +172,7 @@
                     console.log("Error", err);
                 });
             }
-        });*/
-
-        fps.init();
+        });
     </script>
 
     <script src="app.js"></script>
