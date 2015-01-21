@@ -44,13 +44,50 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/q.js/1.1.2/q.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
 
-    <script src="../../bower_components/fps-benchmark/dist/fps.min.js"></script>
+    <script src="../../libs/rAF.js"></script>
+    <script src="../../bower_components/fps-benchmark/fps.js"></script>
+
     <script type="text/javascript">
+        function checkSubstring(stringToCheck) {
+            var hasType = false;
+
+            if(stringToCheck.indexOf('iphone') != -1 || stringToCheck.indexOf('nexus') != -1 || stringToCheck.indexOf('chrome') != -1 || stringToCheck.indexOf('safari') != -1) {
+                hasType = true;
+            }
+
+            return hasType;
+        }
+
         fps.init({
-            duration: 10000,
+            duration: 15000,
             save: function(fpsInfo) {
+                var blar = fpsInfo.userAgent.replace(/[;()]/g, '').toLowerCase();
+                var plop = blar.split(' ');
+                var userAgent;
+                var i = 0;
+
+                while(i < plop.length) {
+                    if(checkSubstring(plop[i])) {
+                        userAgent = plop[i];
+                        break;
+                    }
+                    i++;
+                }
+
+                var collectionType = '';
+
+                if(userAgent.indexOf('iphone') != -1) {
+                    collectionType = '-iphone';
+                } else if(userAgent.indexOf('nexus') != -1) {
+                    collectionType = '-nexus';
+                } else if(userAgent.indexOf('chrome') != -1) {
+                    collectionType = '-chrome';
+                } else if(userAgent.indexOf('safari') != -1) {
+                    collectionType = '-safari';
+                }
+
                 $.ajax({
-                    url: 'https://api.mongolab.com/api/1/databases/perftest/collections/greensock?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
+                    url: 'https://api.mongolab.com/api/1/databases/perftest/collections/greensock' + collectionType + '?apiKey=vGKkyQqFj2AyYkDjQHNP-zARZaD-7jbl',
                     type: 'POST',
                     dataType: 'json',
                     contentType: "application/json",
@@ -62,8 +99,6 @@
                 });
             }
         });
-
-//        fps.init();
     </script>
 
     <script src="app.js"></script>

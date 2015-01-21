@@ -12,6 +12,12 @@
             fill: orangered;
         }
 
+        .famous .line {
+            fill: none;
+            stroke: orangered;
+            stroke-width: 1.5px;
+        }
+
         .famous.circle {
             background-color: orangered;
         }
@@ -22,6 +28,12 @@
 
         .greensock.circle {
             background-color: green;
+        }
+
+        .greensock .line {
+            fill: none;
+            stroke: green;
+            stroke-width: 1.5px;
         }
 
         .main text {
@@ -41,7 +53,7 @@
             border-radius: 4px;
             left: 650px;
             color: #777777;
-            top: 25px;
+            top: 60px;
         }
 
         .circle {
@@ -73,6 +85,10 @@
             left: 408px;
             color: #777777;
         }
+
+        .row {
+            margin-bottom: 36px;
+        }
     </style>
 </head>
 <body>
@@ -94,11 +110,54 @@
             </div>
         </nav>
 
-        <h1>GreenSock v Famous-Angular</h1>
+        <div class="row" id="nexus">
+            <div class="col-md-12">
+                <h3>Nexus</h3>
+                <div class="legend">
+                    <div class="circle famous"></div> Famous-Angular <br>
+                    <div class="circle greensock"></div> GreenSock
+                </div>
+                <div class="x-label">Time</div>
+                <div class="y-label">FPS</div>
+                <svg class="chart"></svg>
+            </div>
+        </div>
 
+        <hr>
 
-        <div class="row">
-            <div class="col-md-12" id="charts">
+        <div class="row" id="iphone">
+            <div class="col-md-12">
+                <h3>iPhone</h3>
+                <div class="legend">
+                    <div class="circle famous"></div> Famous-Angular <br>
+                    <div class="circle greensock"></div> GreenSock
+                </div>
+                <div class="x-label">Time</div>
+                <div class="y-label">FPS</div>
+                <svg class="chart"></svg>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row" id="chrome">
+            <div class="col-md-12">
+                <h3>Chrome</h3>
+                <div class="legend">
+                    <div class="circle famous"></div> Famous-Angular <br>
+                    <div class="circle greensock"></div> GreenSock
+                </div>
+                <div class="x-label">Time</div>
+                <div class="y-label">FPS</div>
+                <svg class="chart"></svg>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row" id="safari">
+            <div class="col-md-12">
+                <h3>Safari</h3>
                 <div class="legend">
                     <div class="circle famous"></div> Famous-Angular <br>
                     <div class="circle greensock"></div> GreenSock
