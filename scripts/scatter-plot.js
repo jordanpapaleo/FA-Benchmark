@@ -1,27 +1,13 @@
 var averagedResults = {};
 
-function getFamousData() {
-    var dataCollections = ['famous', 'famous-iphone', 'famous-nexus', 'famous-safari', 'famous-chrome'];
-    var allPromises = [];
+function getDataCollections() {
+    var dataCollections = ['famous', 'famous-iphone', 'famous-nexus', 'famous-safari', 'famous-chrome', 'greensock', 'greensock-iphone', 'greensock-nexus', 'greensock-safari', 'greensock-chrome'];
 
     for(var i = 0, j = dataCollections.length; i < j; i++) {
         var collectionName = dataCollections[i];
         var dbConfig = getDbConfig(collectionName);
 
         callDb(dbConfig).then(function(data) {
-            mergeResults(data);
-            plotData(data);
-        });
-    }
-}
-
-function getGreensockData() {
-    var dataCollections = ['greensock', 'greensock-iphone', 'greensock-nexus', 'greensock-safari', 'greensock-chrome'];
-
-    for(var i = 0, j = dataCollections.length; i < j; i++) {
-        var collection = dataCollections[i];
-
-        callDb(getDbConfig(collection)).then(function(data) {
             mergeResults(data);
             plotData(data);
         });
@@ -125,7 +111,6 @@ function mutateData(data) {
 }
 
 function scatterPlotRange(data, collectionName, isLine) {
-    console.info('collectionName',collectionName);
     var type = (collectionName.indexOf('famous') != -1) ? 'famous' : 'greensock';
     var interface = collectionName.replace(type + '-', '');
 
@@ -204,5 +189,4 @@ function scatterPlotRange(data, collectionName, isLine) {
     }
 }
 
-getFamousData();
-getGreensockData();
+getDataCollections();
